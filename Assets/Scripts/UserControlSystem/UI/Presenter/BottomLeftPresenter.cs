@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UserControlSystem
 {
-    public class BottomLeftUI: MonoBehaviour
+    public class BottomLeftPresenter: MonoBehaviour
     {
         [SerializeField] private Image _selectedImage;
         [SerializeField] private Slider _healthSlider;
