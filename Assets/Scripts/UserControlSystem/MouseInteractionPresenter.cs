@@ -1,5 +1,5 @@
 using System.Linq;
-using Core;
+using Abstractions;
 using UnityEngine;
 
 namespace UserControlSystem
@@ -7,6 +7,7 @@ namespace UserControlSystem
     public class MouseInteractionPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private SelectableValue _selectedObject;
 
 
         private void Update()
@@ -20,13 +21,11 @@ namespace UserControlSystem
             {
                 return;
             }
-            var mainBuilding = hits.Select(hit => hit.collider.GetComponentInParent<MainBuilding>())
+            var selectable = hits
+                .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
                 .FirstOrDefault(c => c != null);
-            if (mainBuilding == default)
-            {
-                return;
-            }
-            mainBuilding.ProduceUnit();
+           
+            _selectedObject.SetValue(selectable);
         }
     }
 }

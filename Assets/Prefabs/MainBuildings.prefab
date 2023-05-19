@@ -244,6 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitPrefab: {fileID: 0}
   _unitsParent: {fileID: 0}
+  _maxHealth: 1000
+  _icon: {fileID: 0}
 --- !u!1 &2007886003986651630
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,5 +372,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.3479414, y: 7.294241, z: 6.971772}
-  m_Center: {x: 0.540606, y: 3.627759, z: 0.92262745}
+  m_Size: {x: 3.830047, y: 7.294241, z: 3.64115}
+  m_Center: {x: 0.23841204, y: 3.627759, z: 0.6871567}
