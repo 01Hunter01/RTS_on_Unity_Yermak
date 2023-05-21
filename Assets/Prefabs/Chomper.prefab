@@ -1813,6 +1813,7 @@ GameObject:
   - component: {fileID: 3893230039838080041}
   - component: {fileID: 3012045844894272340}
   - component: {fileID: 4504716087686978166}
+  - component: {fileID: 6631399482228065275}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -1872,6 +1873,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealh: 200
   _icon: {fileID: 21300000, guid: a7be702802c0e034ca437dbe910f56ed, type: 3}
+--- !u!114 &6631399482228065275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712971561970647256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.03796029, g: 1, b: 0, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4750171287613407538
 GameObject:
   m_ObjectHideFlags: 0
