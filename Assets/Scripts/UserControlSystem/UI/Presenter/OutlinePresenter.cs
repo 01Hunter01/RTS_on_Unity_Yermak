@@ -7,22 +7,43 @@ namespace UserControlSystem
     public class OutlinePresenter: MonoBehaviour
     {
         [SerializeField] private SelectableValue _selectedValue;
-        [SerializeField] private List<GameObject> _prefabs;
 
+        private OutlineSelectorView[] _selectors;
+        private ISelectable _currentSelectable;
+        
         private void Start()
         {
             _selectedValue.OnSelected += OnSelectedOutline;
             OnSelectedOutline(_selectedValue.CurrentValue);
         }
 
-        private void OnSelectedOutline(ISelectable selected)
+        private void OnSelectedOutline(ISelectable selectable)
         {
-            foreach (var prefab in _prefabs)
+            if (_currentSelectable == selectable)
             {
-                var outline = prefab.GetComponent<Outline>();
-                outline.enabled = selected != null;
+                return;
+            }
+
+            setSelected(_selectors, false);
+            _selectors = null;
+
+            if (selectable != null)
+            {
+                _selectors = ((Component)selectable).GetComponentsInParent<OutlineSelectorView>();
+                setSelected(_selectors, true);
             }
             
         }
+
+        private void setSelected(OutlineSelectorView[] selectors, bool value)
+        {
+           if(selectors != null)
+           {
+               for (int i = 0; i < selectors.Length; i++)
+               {
+                   selectors[i].SetSelected(value);
+               }
+           }
+        }   
     }
 }
