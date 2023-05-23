@@ -23,7 +23,7 @@ namespace UserControlSystem
             }
             var selectable = hits
                 .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
-                .FirstOrDefault(c => c != null);
+                .FirstOrDefault(component => component != null);
            
             _selectedObject.SetValue(selectable);
         }

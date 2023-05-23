@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 2007886003986875852}
   - component: {fileID: 2007886003970445676}
   - component: {fileID: 3911794044707639728}
+  - component: {fileID: 556057550150152152}
+  - component: {fileID: 3345421208753599905}
   m_Layer: 0
   m_Name: MainBuildings
   m_TagString: Untagged
@@ -246,6 +248,37 @@ MonoBehaviour:
   _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _icon: {fileID: 0}
+--- !u!114 &556057550150152152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007886003986651628}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.7879438, b: 0, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &3345421208753599905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007886003986651628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1301c94e984c72a32ef0cef7313864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineScript: {fileID: 556057550150152152}
 --- !u!1 &2007886003986651630
 GameObject:
   m_ObjectHideFlags: 0
