@@ -5,7 +5,6 @@ namespace Core
 {
     public sealed class MainUnit: MonoBehaviour, ISelectable
     {
-
         [SerializeField] private float _maxHealh = 200;
         [SerializeField] private Sprite _icon;
 

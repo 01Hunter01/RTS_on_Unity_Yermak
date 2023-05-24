@@ -4,7 +4,7 @@ using Utils;
 
 namespace UserControlSystem.CommandsRealization
 {
-    public sealed class ProduceUnitCommand: IProduceUnitCommand
+    public class ProduceUnitCommand: IProduceUnitCommand
     {
         public GameObject UnityPrefab => _unityPrefab;
         [InjectAsset("Chomper")] private GameObject _unityPrefab;
