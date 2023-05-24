@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
+    public sealed class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
     {
         [SerializeField] private Transform _unitsParent;
 

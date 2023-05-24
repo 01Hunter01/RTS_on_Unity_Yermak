@@ -1,7 +1,9 @@
 {
     "name": "UserControlSystem",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:d5fd5990237d389428e08f24d1322e60"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
