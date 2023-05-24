@@ -6,13 +6,15 @@ using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
 using UserControlSystem.CommandsRealization;
 using UserControlSystem.UI.View;
+using Utils;
 
 namespace UserControlSystem
 {
-    public class CommandButtonsPresenter: MonoBehaviour
+    public sealed class CommandButtonsPresenter: MonoBehaviour
     {
         [SerializeField] private SelectableValue _selectable;
         [SerializeField] private CommandButtonsView _view;
+        [SerializeField] private AssetContext _context;
 
         private ISelectable _currentSelectable;
 
@@ -47,7 +49,7 @@ namespace UserControlSystem
             var unitProducer = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
             if (unitProducer != null)
             {
-                unitProducer.ExecuteSpecificCommand(new ProduceUnitCommand());
+                unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommand()));
                 return;
             }
             throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(ONButtonClick)}: " +
