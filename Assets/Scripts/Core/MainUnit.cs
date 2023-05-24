@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MainUnit: MonoBehaviour, ISelectable
+    public sealed class MainUnit: MonoBehaviour, ISelectable
     {
 
         [SerializeField] private float _maxHealh = 200;
