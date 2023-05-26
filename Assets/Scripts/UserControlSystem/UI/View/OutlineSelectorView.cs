@@ -4,9 +4,11 @@ namespace UserControlSystem
 {
     public class OutlineSelectorView: MonoBehaviour
     {
-        [SerializeField] private Outline _outlineScript;
+        [SerializeField] private Outline[] _outlineComponents;
 
         private bool _isSelectedCache;
+
+        private void Start() => DisableOutline();
 
         public void SetSelected(bool isSelected)
         {
@@ -15,8 +17,32 @@ namespace UserControlSystem
                 return;
             }
 
-            _outlineScript.enabled = isSelected;
+            if (isSelected)
+            {
+                EnableOutline();
+            }
+            else
+            {
+                DisableOutline();
+            }
+
             _isSelectedCache = isSelected;
+        }
+
+        private void DisableOutline() 
+        {
+            for (int i = 0; i < _outlineComponents.Length; i++)
+            {
+                _outlineComponents[i].enabled = false;
+            }
+        }
+        
+        private void EnableOutline() 
+        {
+            for (int i = 0; i < _outlineComponents.Length; i++)
+            {
+                _outlineComponents[i].enabled = true;
+            }
         }
     }
 }

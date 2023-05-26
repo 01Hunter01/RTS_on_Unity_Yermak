@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Abstractions;
 using UnityEngine;
 
@@ -8,13 +7,12 @@ namespace UserControlSystem
     {
         [SerializeField] private SelectableValue _selectedValue;
 
-        private OutlineSelectorView[] _selectors;
+        private OutlineSelectorView[] _outlineSelectors;
         private ISelectable _currentSelectable;
         
         private void Start()
         {
             _selectedValue.OnSelected += OnSelectedOutline;
-            OnSelectedOutline(_selectedValue.CurrentValue);
         }
 
         private void OnSelectedOutline(ISelectable selectable)
@@ -24,18 +22,26 @@ namespace UserControlSystem
                 return;
             }
 
-            setSelected(_selectors, false);
-            _selectors = null;
+            SetSelected(_outlineSelectors, false);
+            _outlineSelectors = null;
 
             if (selectable != null)
             {
-                _selectors = ((Component)selectable).GetComponentsInParent<OutlineSelectorView>();
-                setSelected(_selectors, true);
+                _outlineSelectors = ((Component)selectable).GetComponentsInParent<OutlineSelectorView>();
+                SetSelected(_outlineSelectors, true);
             }
-            
+            else
+            {
+                if (_outlineSelectors != null)
+                {
+                    SetSelected(_outlineSelectors, false);
+                }
+            }
+
+            _currentSelectable = selectable;
         }
 
-        private void setSelected(OutlineSelectorView[] selectors, bool value)
+        private void SetSelected(OutlineSelectorView[] selectors, bool value)
         {
            if(selectors != null)
            {
