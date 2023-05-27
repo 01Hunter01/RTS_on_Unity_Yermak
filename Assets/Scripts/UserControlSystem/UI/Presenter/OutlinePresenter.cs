@@ -12,7 +12,7 @@ namespace UserControlSystem
         
         private void Start()
         {
-            _selectedValue.OnChanged += OnSelectedOutline;
+            _selectedValue.OnNewValue += OnSelectedOutline;
         }
 
         private void OnSelectedOutline(ISelectable selectable)
