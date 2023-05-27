@@ -9,10 +9,12 @@ namespace UserControlSystem
     public sealed class UIModelInstaller: MonoInstaller
     {
         [SerializeField] private AssetContext _legacyContext;
+        [SerializeField] private Vector3Value _vector3Value;
 
         public override void InstallBindings()
         {
             Container.Bind<AssetContext>().FromInstance(_legacyContext);
+            Container.Bind<Vector3Value>().FromInstance(_vector3Value);
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCommandCreator>().AsTransient();
