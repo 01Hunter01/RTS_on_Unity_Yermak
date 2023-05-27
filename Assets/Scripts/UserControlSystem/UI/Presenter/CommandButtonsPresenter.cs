@@ -20,7 +20,7 @@ namespace UserControlSystem
 
         private void Start()
         {
-            _selectable.OnSelected += ONSelected;
+            _selectable.OnChanged += ONSelected;
             ONSelected(_selectable.CurrentValue);
 
             _view.OnClick += ONButtonClick;
