@@ -4,9 +4,6 @@ namespace UserControlSystem.CommandsRealization
 {
     public class MoveCommand: IMoveCommand
     {
-        public void Move()
-        {
-            
-        }
+       
     }
 }
