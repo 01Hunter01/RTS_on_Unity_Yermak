@@ -8,7 +8,7 @@ namespace Core
     {
         public override void ExecuteSpecificCommand(IPatrolCommand command)
         {
-            Debug.Log("I am patrolling this area...");
+            Debug.Log($"{name} is patrolling at this location {command.Target}!");
         }
     }
 }
