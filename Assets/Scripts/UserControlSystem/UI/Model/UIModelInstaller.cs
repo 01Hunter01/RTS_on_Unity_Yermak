@@ -1,6 +1,5 @@
 using Abstractions.Commands.CommandsInterfaces;
 using Zenject;
-using UnityEngine;
 using UserControlSystem.CommandCreators;
 using Utils;
 
@@ -8,15 +7,13 @@ namespace UserControlSystem
 {
     public sealed class UIModelInstaller: MonoInstaller
     {
-        [SerializeField] private AssetContext _legacyContext;
-        [SerializeField] private Vector3Value _vector3Value;
-        [SerializeField] private AttackableValue _attackableValue;
-
+        [Inject] private ScriptableObjectValues _values;
+        
         public override void InstallBindings()
         {
-            Container.Bind<AssetContext>().FromInstance(_legacyContext);
-            Container.Bind<Vector3Value>().FromInstance(_vector3Value);
-            Container.Bind<AttackableValue>().FromInstance(_attackableValue);
+            Container.Bind<AssetContext>().FromInstance(_values.assetContext);
+            Container.Bind<Vector3Value>().FromInstance(_values.vector3Value);
+            Container.Bind<AttackableValue>().FromInstance(_values.attackableValue);
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCommandCreator>().AsTransient();

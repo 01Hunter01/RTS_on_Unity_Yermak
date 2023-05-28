@@ -3221,9 +3221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8550e0abea47619b2ebe51b040f7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _legacyContext: {fileID: 11400000, guid: 4aeb61e37c8092f468fccdf545cc12b3, type: 2}
-  _vector3Value: {fileID: 11400000, guid: d6e619cc7c3646e41b9cd4d06f7164d1, type: 2}
-  _attackableValue: {fileID: 11400000, guid: 30e36868b9fc2ae44b6cd502c1b326ab, type: 2}
 --- !u!1001 &1605890356
 PrefabInstance:
   m_ObjectHideFlags: 0
