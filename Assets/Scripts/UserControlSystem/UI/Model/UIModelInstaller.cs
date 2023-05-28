@@ -10,11 +10,13 @@ namespace UserControlSystem
     {
         [SerializeField] private AssetContext _legacyContext;
         [SerializeField] private Vector3Value _vector3Value;
+        [SerializeField] private AttackableValue _attackableValue;
 
         public override void InstallBindings()
         {
             Container.Bind<AssetContext>().FromInstance(_legacyContext);
             Container.Bind<Vector3Value>().FromInstance(_vector3Value);
+            Container.Bind<AttackableValue>().FromInstance(_attackableValue);
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCommandCreator>().AsTransient();

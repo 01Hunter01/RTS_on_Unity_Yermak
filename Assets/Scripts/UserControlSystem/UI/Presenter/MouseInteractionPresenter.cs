@@ -14,6 +14,8 @@ namespace UserControlSystem
         [SerializeField] private Vector3Value _groundClicksRMB;
         [SerializeField] private Transform _groundTransform;
 
+        [SerializeField] private AttackableValue _target;
+
         private Plane _groundPlane;
 
         private void Start()
@@ -27,6 +29,7 @@ namespace UserControlSystem
             {
                 return;
             }
+            
             if (_eventSystem.IsPointerOverGameObject())
             {
                 return;
@@ -36,22 +39,51 @@ namespace UserControlSystem
 
             if (Input.GetMouseButtonUp(0))
             {
-                var hits = Physics.RaycastAll(ray);
-                if (hits.Length == 0)
-                {
-                    return;
-                }
-                var selectable = hits
-                    .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
-                    .FirstOrDefault(component => component != null);    
-                _selectedObject.SetValue(selectable);
+                GetSelectableObject(ray);
             }
             else
             {
-                if (_groundPlane.Raycast(ray, out var enter))
-                {
-                    _groundClicksRMB.SetValue((ray.origin + ray.direction*enter));
-                }
+                GetPointForMove(ray);
+                GetTargetForAttack(ray);
+            }
+        }
+
+        private void GetSelectableObject(Ray ray)
+        {
+            var hits = Physics.RaycastAll(ray);
+            if (hits.Length == 0)
+            {
+                return;
+            }
+            var selectable = hits
+                .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
+                .FirstOrDefault(component => component != null);    
+            _selectedObject.SetValue(selectable);
+        }
+
+        private void GetPointForMove(Ray ray)
+        {
+            if (_groundPlane.Raycast(ray, out var enter))
+            {
+                _groundClicksRMB.SetValue((ray.origin + ray.direction*enter));
+            }
+        }
+
+        private void GetTargetForAttack(Ray ray)
+        {
+            var hits = Physics.RaycastAll(ray);
+            if (hits.Length == 0)
+            {
+                return;
+            }
+            
+            var attackable = hits
+                .Select(hit => hit.collider.GetComponentInParent<BoxCollider>())
+                .FirstOrDefault(component => component != null);
+
+            if (attackable != null)
+            {
+                _target.SetValue(attackable.gameObject);
             }
         }
     }
