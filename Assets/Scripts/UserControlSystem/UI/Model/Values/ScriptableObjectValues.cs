@@ -8,6 +8,7 @@ namespace UserControlSystem
     {
         public AssetContext assetContext;
         public Vector3Value vector3Value;
+        public SelectableValue selectableValue;
         public AttackableValue attackableValue;
     }
 }

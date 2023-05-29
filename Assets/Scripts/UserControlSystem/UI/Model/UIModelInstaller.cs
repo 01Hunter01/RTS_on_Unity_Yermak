@@ -13,6 +13,7 @@ namespace UserControlSystem
         {
             Container.Bind<AssetContext>().FromInstance(_values.assetContext);
             Container.Bind<Vector3Value>().FromInstance(_values.vector3Value);
+            Container.Bind<SelectableValue>().FromInstance(_values.selectableValue);
             Container.Bind<AttackableValue>().FromInstance(_values.attackableValue);
 
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()

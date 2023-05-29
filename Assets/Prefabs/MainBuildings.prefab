@@ -247,6 +247,7 @@ MonoBehaviour:
   _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _icon: {fileID: 0}
+  _pivotPoint: {fileID: 2007886003986875852}
 --- !u!114 &556057550150152152
 MonoBehaviour:
   m_ObjectHideFlags: 0

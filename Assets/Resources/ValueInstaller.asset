@@ -15,4 +15,5 @@ MonoBehaviour:
   values:
     assetContext: {fileID: 11400000, guid: 4aeb61e37c8092f468fccdf545cc12b3, type: 2}
     vector3Value: {fileID: 11400000, guid: d6e619cc7c3646e41b9cd4d06f7164d1, type: 2}
+    selectableValue: {fileID: 11400000, guid: 3dd00a63e624b174489c73e85d2337e3, type: 2}
     attackableValue: {fileID: 11400000, guid: 30e36868b9fc2ae44b6cd502c1b326ab, type: 2}

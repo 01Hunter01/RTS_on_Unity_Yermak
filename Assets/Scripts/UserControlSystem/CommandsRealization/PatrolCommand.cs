@@ -5,11 +5,13 @@ namespace UserControlSystem.CommandsRealization
 {
     public sealed class PatrolCommand: IPatrolCommand
     {
-        public Vector3 Target { get; }
+        public Vector3 StartPoint { get; }
+        public Vector3 EndPoint { get; }
 
-        public PatrolCommand(Vector3 target)
+        public PatrolCommand(Vector3 startPoint, Vector3 endPoint)
         {
-            Target = target;
+            StartPoint = startPoint;
+            EndPoint = endPoint;
         }
     }
 }
