@@ -2186,7 +2186,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 556057550150152152, guid: 254e6cff57494d64cb123d6724a74024, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2007886003986651628, guid: 254e6cff57494d64cb123d6724a74024, type: 3}
       propertyPath: m_Name
@@ -3521,11 +3521,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
-  _selectedObject: {fileID: 11400000, guid: 3dd00a63e624b174489c73e85d2337e3, type: 2}
   _eventSystem: {fileID: 1707293036}
+  _selectedObject: {fileID: 11400000, guid: 3dd00a63e624b174489c73e85d2337e3, type: 2}
   _groundClicksRMB: {fileID: 11400000, guid: d6e619cc7c3646e41b9cd4d06f7164d1, type: 2}
+  _attackablesRMB: {fileID: 11400000, guid: 30e36868b9fc2ae44b6cd502c1b326ab, type: 2}
   _groundTransform: {fileID: 623958678}
-  _target: {fileID: 11400000, guid: 30e36868b9fc2ae44b6cd502c1b326ab, type: 2}
 --- !u!114 &1756342001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4364,7 +4364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6631399482228065275, guid: cc11b8268752c454498d483f72fefb98, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc11b8268752c454498d483f72fefb98, type: 3}

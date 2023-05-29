@@ -1,7 +1,6 @@
 using System;
-using System.Runtime.InteropServices;
+using Abstractions;
 using Abstractions.Commands.CommandsInterfaces;
-using UnityEngine;
 using UserControlSystem.CommandsRealization;
 using Utils;
 using Zenject;
@@ -21,9 +20,9 @@ namespace UserControlSystem.CommandCreators
             targets.OnNewValue += onNewValue;
         }
 
-        private void onNewValue(GameObject target)
+        private void onNewValue(IAttackable attackable)
         {
-            _creationCallback?.Invoke(_context.Inject(new AttackCommand(target)));
+            _creationCallback?.Invoke(_context.Inject(new AttackCommand(attackable)));
             _creationCallback = null;
         }
 

@@ -8,7 +8,8 @@ namespace Core
     {
         public override void ExecuteSpecificCommand(IAttackCommand command)
         {
-            Debug.Log($"{name} is attacking {command.Target.name}!");
+            Debug.Log($"{name} is attacking {command.Target} " +
+                      $"with {command.Target.Health}/{command.Target.MaxHealth} hp!");
         }
         
     }

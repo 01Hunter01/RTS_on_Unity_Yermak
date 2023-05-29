@@ -8,13 +8,12 @@ namespace UserControlSystem
     public class MouseInteractionPresenter : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private SelectableValue _selectedObject;
         [SerializeField] private EventSystem _eventSystem;
+        [SerializeField] private SelectableValue _selectedObject;
 
         [SerializeField] private Vector3Value _groundClicksRMB;
+        [SerializeField] private AttackableValue _attackablesRMB;
         [SerializeField] private Transform _groundTransform;
-
-        [SerializeField] private AttackableValue _target;
 
         private Plane _groundPlane;
 
@@ -36,55 +35,39 @@ namespace UserControlSystem
             }
 
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            var hits = Physics.RaycastAll(ray);
 
             if (Input.GetMouseButtonUp(0))
             {
-                GetSelectableObject(ray);
+                if (WeHit<ISelectable>(hits, out var selectable))
+                {
+                    _selectedObject.SetValue(selectable);
+                }
             }
             else
             {
-                GetPointForMove(ray);
-                GetTargetForAttack(ray);
+                if (WeHit<IAttackable>(hits, out var attackable))
+                {
+                    _attackablesRMB.SetValue(attackable);
+                }
+                else if (_groundPlane.Raycast(ray, out var enter))
+                {
+                    _groundClicksRMB.SetValue((ray.origin + ray.direction*enter));
+                }
             }
         }
 
-        private void GetSelectableObject(Ray ray)
+        private bool WeHit<T>(RaycastHit[] hits, out T result) where T: class
         {
-            var hits = Physics.RaycastAll(ray);
+            result = default;
             if (hits.Length == 0)
             {
-                return;
+                return false;
             }
-            var selectable = hits
-                .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
-                .FirstOrDefault(component => component != null);    
-            _selectedObject.SetValue(selectable);
-        }
-
-        private void GetPointForMove(Ray ray)
-        {
-            if (_groundPlane.Raycast(ray, out var enter))
-            {
-                _groundClicksRMB.SetValue((ray.origin + ray.direction*enter));
-            }
-        }
-
-        private void GetTargetForAttack(Ray ray)
-        {
-            var hits = Physics.RaycastAll(ray);
-            if (hits.Length == 0)
-            {
-                return;
-            }
-            
-            var attackable = hits
-                .Select(hit => hit.collider.GetComponentInParent<BoxCollider>())
-                .FirstOrDefault(component => component != null);
-
-            if (attackable != null)
-            {
-                _target.SetValue(attackable.gameObject);
-            }
+            result = hits
+                .Select(hit => hit.collider.GetComponentInParent<T>())
+                .FirstOrDefault(c => c != null);
+            return result != default;
         }
     }
 }

@@ -1,13 +1,13 @@
+using Abstractions;
 using Abstractions.Commands.CommandsInterfaces;
-using UnityEngine;
 
 namespace UserControlSystem.CommandsRealization
 {
     public class AttackCommand: IAttackCommand
     {
-        public GameObject Target { get; }
+        public IAttackable Target { get; }
 
-        public AttackCommand(GameObject target)
+        public AttackCommand(IAttackable target)
         {
             Target = target;
         }
