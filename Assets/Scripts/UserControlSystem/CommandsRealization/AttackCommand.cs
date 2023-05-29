@@ -1,12 +1,15 @@
+using Abstractions;
 using Abstractions.Commands.CommandsInterfaces;
 
 namespace UserControlSystem.CommandsRealization
 {
     public class AttackCommand: IAttackCommand
     {
-        public void Attack()
+        public IAttackable Target { get; }
+
+        public AttackCommand(IAttackable target)
         {
-            
+            Target = target;
         }
     }
 }

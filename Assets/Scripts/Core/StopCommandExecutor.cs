@@ -8,8 +8,7 @@ namespace Core
     {
         public override void ExecuteSpecificCommand(IStopCommand command)
         {
-            command.Stop();
-            Debug.Log("I am holding this position...");
+            Debug.Log("I am holding at this position!");
         }
     }
 }

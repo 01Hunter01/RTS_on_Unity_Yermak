@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace Abstractions.Commands.CommandsInterfaces
 {
     public interface IAttackCommand: ICommand
     {
-        void Attack();
+        public IAttackable Target { get; }
     }
 }

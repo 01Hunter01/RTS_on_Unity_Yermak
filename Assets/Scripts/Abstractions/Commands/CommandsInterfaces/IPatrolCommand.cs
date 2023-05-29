@@ -1,7 +1,10 @@
+using UnityEngine;
+
 namespace Abstractions.Commands.CommandsInterfaces
 {
     public interface IPatrolCommand: ICommand
     {
-        void PatrolArea();
+        public Vector3 StartPoint { get; }
+        public Vector3 EndPoint { get; }
     }
 }
