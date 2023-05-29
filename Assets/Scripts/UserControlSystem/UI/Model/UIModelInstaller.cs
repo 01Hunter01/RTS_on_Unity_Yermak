@@ -7,15 +7,8 @@ namespace UserControlSystem
 {
     public sealed class UIModelInstaller: MonoInstaller
     {
-        [Inject] private ScriptableObjectValues _values;
-        
         public override void InstallBindings()
         {
-            Container.Bind<AssetContext>().FromInstance(_values.assetContext);
-            Container.Bind<Vector3Value>().FromInstance(_values.vector3Value);
-            Container.Bind<SelectableValue>().FromInstance(_values.selectableValue);
-            Container.Bind<AttackableValue>().FromInstance(_values.attackableValue);
-
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>()
