@@ -1927,6 +1927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stop: {fileID: 155872312772977597}
   _animator: {fileID: 3012045844894272340}
+  _stopCommandExecutor: {fileID: 3202371151230032085}
 --- !u!114 &3202371151230032085
 MonoBehaviour:
   m_ObjectHideFlags: 0
