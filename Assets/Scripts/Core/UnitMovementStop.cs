@@ -7,11 +7,9 @@ namespace Core
 {
     public class UnitMovementStop: MonoBehaviour, IAwaitable<AsyncExtensions.Void>
     {
-        public class StopAwaiter: IAwaiter<AsyncExtensions.Void>
+        public class StopAwaiter: AwaiterBase<AsyncExtensions.Void>
         {
             private readonly UnitMovementStop _unitMovementStop;
-            private Action _continuation;
-            private bool _isCompleted;
 
             public StopAwaiter(UnitMovementStop unitMovementStop)
             {
@@ -22,24 +20,8 @@ namespace Core
             private void onStop()
             {
                 _unitMovementStop.OnStop -= onStop;
-                _isCompleted = true;
-                _continuation?.Invoke();
+                OnWaitFinish(new AsyncExtensions.Void());
             }
-
-            public void OnCompleted(Action contination)
-            {
-                if (_isCompleted)
-                {
-                    contination?.Invoke();
-                }
-                else
-                {
-                    _continuation = contination;
-                }
-            }
-
-            public bool IsCompleted => _isCompleted;
-            public AsyncExtensions.Void GetResult() => new AsyncExtensions.Void();
         }
 
         private event Action OnStop;
