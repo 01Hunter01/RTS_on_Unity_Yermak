@@ -8,7 +8,7 @@ namespace Core
 {
     public class TimeModel: ITimeModel, ITickable
     {
-        public IObservable<int> GameTime { get; }
+        public IObservable<int> GameTime => _gameTime.Select(f => (int)f);
 
         private ReactiveProperty<float> _gameTime = new ReactiveProperty<float>();
         
