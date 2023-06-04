@@ -1,3 +1,4 @@
+using Abstractions;
 using UnityEngine;
 using UserControlSystem;
 using Utils;
@@ -10,8 +11,11 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
     [SerializeField] private Vector3Value _groundClicksRMB;
     [SerializeField] private SelectableValue _selectables;
     [SerializeField] private AttackableValue _attackablesRMB;
+    
     public override void InstallBindings()
     {
         Container.BindInstances(_legacyContext, _groundClicksRMB, _selectables, _attackablesRMB);
+        Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackablesRMB);
+        Container.Bind<IAwaitable<Vector3>>().FromInstance(_groundClicksRMB);
     }
 }

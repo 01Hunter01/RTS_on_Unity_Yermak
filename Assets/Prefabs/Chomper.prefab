@@ -1820,6 +1820,8 @@ GameObject:
   - component: {fileID: 3252676345994245526}
   - component: {fileID: 151525730390583531}
   - component: {fileID: 8682138817804491172}
+  - component: {fileID: 5263682059190728383}
+  - component: {fileID: 155872312772977597}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -1854,7 +1856,7 @@ Animator:
   m_GameObject: {fileID: 4712971561970647256}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa837db446df00542878e9b1010ef49b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1923,6 +1925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2633c7d05ea4df18c3c8cb7b00182cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: 155872312772977597}
+  _animator: {fileID: 3012045844894272340}
+  _stopCommandExecutor: {fileID: 3202371151230032085}
 --- !u!114 &3202371151230032085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,6 +1977,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.534, z: 0}
+--- !u!195 &5263682059190728383
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712971561970647256}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &155872312772977597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712971561970647256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30679c61e67d4026921f312fd6adb2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 5263682059190728383}
 --- !u!1 &4750171287613407538
 GameObject:
   m_ObjectHideFlags: 0
