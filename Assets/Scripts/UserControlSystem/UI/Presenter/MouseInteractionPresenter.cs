@@ -25,17 +25,17 @@ namespace UserControlSystem
         {
             _groundPlane = new Plane(_groundTransform.up, 0);
 
-            var nonBlovkedByUiFramesStream = Observable.EveryUpdate()
+            var nonBlockedByUiFramesStream = Observable.EveryUpdate()
                 .Where(_ => !_eventSystem.IsPointerOverGameObject());
 
-            var leftClicksStream = nonBlovkedByUiFramesStream
+            var leftClicksStream = nonBlockedByUiFramesStream
                 .Where(_ => Input.GetMouseButtonDown(0));
-            var rightClicksStream = nonBlovkedByUiFramesStream
+            var rightClicksStream = nonBlockedByUiFramesStream
                 .Where(_ => Input.GetMouseButtonDown(1));
 
             var lmbRays = leftClicksStream
                 .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
-            var rmbBays = leftClicksStream
+            var rmbBays = rightClicksStream
                 .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
 
             var lmbHitsStream = lmbRays.Select(ray => Physics.RaycastAll(ray));
