@@ -1,7 +1,10 @@
 using System.Linq;
 using Abstractions;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils;
+using Zenject;
 
 namespace UserControlSystem
 {
@@ -17,34 +20,36 @@ namespace UserControlSystem
 
         private Plane _groundPlane;
 
-        private void Start()
+        [Inject]
+        private void Init()
         {
             _groundPlane = new Plane(_groundTransform.up, 0);
-        }
 
-        private void Update()
-        {
-            if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButton(1))
-            {
-                return;
-            }
-            
-            if (_eventSystem.IsPointerOverGameObject())
-            {
-                return;
-            }
+            var nonBlockedByUiFramesStream = Observable.EveryUpdate()
+                .Where(_ => !_eventSystem.IsPointerOverGameObject());
 
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            var hits = Physics.RaycastAll(ray);
+            var leftClicksStream = nonBlockedByUiFramesStream
+                .Where(_ => Input.GetMouseButtonDown(0));
+            var rightClicksStream = nonBlockedByUiFramesStream
+                .Where(_ => Input.GetMouseButtonDown(1));
 
-            if (Input.GetMouseButtonUp(0))
+            var lmbRays = leftClicksStream
+                .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+            var rmbBays = rightClicksStream
+                .Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+
+            var lmbHitsStream = lmbRays.Select(ray => Physics.RaycastAll(ray));
+            var rmbHitsStream = rmbBays.Select(ray => (ray, Physics.RaycastAll(ray)));
+
+            lmbHitsStream.Subscribe(hits =>
             {
                 if (WeHit<ISelectable>(hits, out var selectable))
                 {
                     _selectedObject.SetValue(selectable);
                 }
-            }
-            else
+            });
+
+            rmbHitsStream.Subscribe((ray, hits) =>
             {
                 if (WeHit<IAttackable>(hits, out var attackable))
                 {
@@ -52,9 +57,9 @@ namespace UserControlSystem
                 }
                 else if (_groundPlane.Raycast(ray, out var enter))
                 {
-                    _groundClicksRMB.SetValue((ray.origin + ray.direction*enter));
+                    _groundClicksRMB.SetValue((ray.origin + ray.direction * enter));
                 }
-            }
+            });
         }
 
         private bool WeHit<T>(RaycastHit[] hits, out T result) where T: class
