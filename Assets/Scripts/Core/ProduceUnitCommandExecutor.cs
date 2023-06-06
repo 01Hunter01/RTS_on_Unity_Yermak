@@ -9,7 +9,7 @@ namespace Core
 {
     public class ProduceUnitCommandExecutor: CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
     {
-        public IReadOnlyReactiveCollection<IUnitProductionTask> Queue { get; }
+        public IReadOnlyReactiveCollection<IUnitProductionTask> Queue => _queue;
 
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private int _maximumUnitsInQueue = 6;

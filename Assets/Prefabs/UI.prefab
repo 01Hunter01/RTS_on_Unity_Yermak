@@ -824,6 +824,8 @@ GameObject:
   - component: {fileID: 8547995174890351071}
   - component: {fileID: 1115802107186583680}
   - component: {fileID: 4327122623150168086}
+  - component: {fileID: 8188494183338476388}
+  - component: {fileID: 2497892520357175863}
   m_Layer: 5
   m_Name: Center
   m_TagString: Untagged
@@ -890,6 +892,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8188494183338476388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478387852921571612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a894c2216a8c45f2a16379aca332623b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _productionProgressSlider: {fileID: 736829407175598803}
+  _currentUnitName: {fileID: 6361468936492004904}
+  _images:
+  - {fileID: 8267664779347239736}
+  - {fileID: 8944375365107384540}
+  - {fileID: 1700833086176419422}
+  - {fileID: 775401015217101319}
+  - {fileID: 8561437645802823097}
+  _imageHolders:
+  - {fileID: 4030436379408251649}
+  - {fileID: 7010043260853246918}
+  - {fileID: 5100120719286882593}
+  - {fileID: 2430799869213602269}
+  - {fileID: 2404758241301492463}
+  _buttons:
+  - {fileID: 7468936934896238728}
+  - {fileID: 8165150999463183759}
+  - {fileID: 545585219759447704}
+  - {fileID: 4279583095695976548}
+  - {fileID: 4562970759757849561}
+--- !u!114 &2497892520357175863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478387852921571612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5a8953cf1945c7a1ea5039a82d52d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiHolder: {fileID: 7673716439389386918}
 --- !u!1 &3333242938885810834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,6 +5284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2904688355568932441}
+  - component: {fileID: 6407136363577917670}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -5267,3 +5315,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6407136363577917670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213051735873196816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c499d0cfcff54e22b279f4e6b71c02fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
