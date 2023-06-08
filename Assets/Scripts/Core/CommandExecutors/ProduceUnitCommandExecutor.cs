@@ -1,8 +1,9 @@
+using System.Threading.Tasks;
 using Abstractions;
-using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
 using UniRx;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Core
@@ -13,6 +14,7 @@ namespace Core
 
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private int _maximumUnitsInQueue = 6;
+        [Inject] private DiContainer _diContainer;
 
         private ReactiveCollection<IUnitProductionTask> _queue = new
             ReactiveCollection<IUnitProductionTask>();
@@ -31,7 +33,7 @@ namespace Core
             if (innerTask.TimeLeft <= 0)
             {
                 RemoveTaskAtIndex(0);
-                Instantiate(innerTask.UnitPrefab, 
+                _diContainer.InstantiatePrefab(innerTask.UnitPrefab, 
                     new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), 
                     Quaternion.identity, _unitsParent);
             }
@@ -48,7 +50,7 @@ namespace Core
             _queue.RemoveAt(_queue.Count - 1);
         }
 
-        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+        public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             if (_queue.Count == _maximumUnitsInQueue)
             {
