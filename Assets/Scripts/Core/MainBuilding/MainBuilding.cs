@@ -15,6 +15,8 @@ namespace Core
         public float MaxHealth => _maxHealth;
         public Sprite Icon => _icon;
         public Transform PivotPoint => _pivotPoint;
+        
+        public Vector3 RallyPoint { get; set; }
 
     }
 }

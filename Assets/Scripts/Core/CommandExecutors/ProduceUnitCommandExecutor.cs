@@ -3,6 +3,7 @@ using Abstractions;
 using Abstractions.Commands.CommandsInterfaces;
 using UniRx;
 using UnityEngine;
+using UserControlSystem.CommandsRealization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -32,9 +33,11 @@ namespace Core
             if (innerTask.TimeLeft <= 0)
             {
                 RemoveTaskAtIndex(0);
-                _diContainer.InstantiatePrefab(innerTask.UnitPrefab, 
-                    new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), 
+                var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, 
                     Quaternion.identity, _unitsParent);
+                var queue = instance.GetComponent<ICommandsQueue>();
+                var mainBuilding = GetComponent<MainBuilding>();
+                queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
             }
         }
 
@@ -51,6 +54,7 @@ namespace Core
 
         public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
+           
             if (_queue.Count == _maximumUnitsInQueue)
             {
                 return;
