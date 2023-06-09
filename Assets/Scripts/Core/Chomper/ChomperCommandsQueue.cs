@@ -11,28 +11,28 @@ namespace Core
 {
     public class ChomperCommandsQueue: MonoBehaviour, ICommandsQueue
     {
-        [Inject] private CommandExecutorBase<IMoveCommand> _moveCommandExecutor;
-        [Inject] private CommandExecutorBase<IPatrolCommand> _patrolCommandExecutor;
-        [Inject] private CommandExecutorBase<IAttackCommand> _attackCommandExecutor;
-        [Inject] private CommandExecutorBase<IStopCommand> _stopCommandExecutor;
+        [Inject] CommandExecutorBase<IMoveCommand> _moveCommandExecutor;
+        [Inject] CommandExecutorBase<IPatrolCommand> _patrolCommandExecutor;
+        [Inject] CommandExecutorBase<IAttackCommand> _attackCommandExecutor;
+        [Inject] CommandExecutorBase<IStopCommand> _stopCommandExecutor;
 
         private ReactiveCollection<ICommand> _innerCollection = new ReactiveCollection<ICommand>();
 
         [Inject]
         private void Init()
         {
-            _innerCollection.ObserveAdd().Subscribe(onNewCommand).AddTo(this);
+            _innerCollection.ObserveAdd().Subscribe(OnNewCommand).AddTo(this);
         }
 
-        private void onNewCommand(ICommand command, int index)
+        private void OnNewCommand(ICommand command, int index)
         {
             if (index == 0)
             {
-                executeCommand(command);
+                ExecuteCommand(command);
             }
         }
 
-        private async void executeCommand(ICommand command)
+        private async void ExecuteCommand(ICommand command)
         {
             await _moveCommandExecutor.TryExecuteCommand(command);
             await _patrolCommandExecutor.TryExecuteCommand(command);
@@ -43,14 +43,14 @@ namespace Core
             {
                 _innerCollection.RemoveAt(0);
             }
-            checkTheQueue();
+            CheckTheQueue();
         }
 
-        private void checkTheQueue()
+        private void CheckTheQueue()
         {
             if (_innerCollection.Count > 0)
             {
-                executeCommand(_innerCollection[0]);
+                ExecuteCommand(_innerCollection[0]);
             }
         }
         

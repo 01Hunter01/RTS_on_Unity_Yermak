@@ -1822,7 +1822,9 @@ GameObject:
   - component: {fileID: 8682138817804491172}
   - component: {fileID: 5263682059190728383}
   - component: {fileID: 155872312772977597}
-  - component: {fileID: 4460756483445807909}
+  - component: {fileID: 4167473163849857197}
+  - component: {fileID: 7767065076883281256}
+  - component: {fileID: 352804297097592715}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -2013,7 +2015,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 5263682059190728383}
---- !u!114 &4460756483445807909
+--- !u!114 &4167473163849857197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712971561970647256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1675e4f11c40c89a6ebb79d8be392c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7767065076883281256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712971561970647256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 4167473163849857197}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &352804297097592715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

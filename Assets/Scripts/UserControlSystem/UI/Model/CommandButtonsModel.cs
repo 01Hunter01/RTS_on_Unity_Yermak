@@ -32,18 +32,18 @@ namespace UserControlSystem
             OnCommandAccepted?.Invoke(commandExecutor);
 
             _unitProducer.ProcessCommandExecutor(commandExecutor,
-                command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
+                command => ExecuteCommandWrapper(command, commandsQueue));
             _attacker.ProcessCommandExecutor(commandExecutor,
-                command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
+                command => ExecuteCommandWrapper(command, commandsQueue));
             _stopper.ProcessCommandExecutor(commandExecutor,
-                command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
+                command => ExecuteCommandWrapper(command, commandsQueue));
             _mover.ProcessCommandExecutor(commandExecutor,
-                command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
+                command => ExecuteCommandWrapper(command, commandsQueue));
             _patroller.ProcessCommandExecutor(commandExecutor,
-                command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
+                command => ExecuteCommandWrapper(command, commandsQueue));
         }
 
-        private void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
+        public void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
         {
             if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {

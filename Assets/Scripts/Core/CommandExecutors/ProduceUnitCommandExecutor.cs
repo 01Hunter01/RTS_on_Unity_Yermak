@@ -16,8 +16,7 @@ namespace Core
         [SerializeField] private int _maximumUnitsInQueue = 6;
         [Inject] private DiContainer _diContainer;
 
-        private ReactiveCollection<IUnitProductionTask> _queue = new
-            ReactiveCollection<IUnitProductionTask>();
+        private ReactiveCollection<IUnitProductionTask> _queue = new ReactiveCollection<IUnitProductionTask>();
 
         private void Start() => Observable.EveryUpdate().Subscribe(l => OnUpdate());
 
